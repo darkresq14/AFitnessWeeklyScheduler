@@ -1,0 +1,17 @@
+<nav class="nav nav-tabs flex-column flex-sm-row">
+  <a
+    [routerLink]="['/day/', link]"
+    routerLinkActive="active"
+    class="flex-sm-fill text-sm-center nav-link"
+    href="#"
+    *ngFor="let link of links | enumToArray"
+    >{{ link }}</a
+  >
+  <a
+    [routerLink]="['/summary']"
+    routerLinkActive="active"
+    class="flex-sm-fill text-sm-center nav-link"
+    href="#"
+    >Summary</a
+  >
+</nav>
