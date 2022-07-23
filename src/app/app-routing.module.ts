@@ -5,7 +5,7 @@ import { SummaryComponent } from './pages/summary/summary.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'summary', pathMatch: 'full' },
-  { path: 'day', children: [{ path: ':id', component: DayComponent }] },
+  { path: 'day', children: [{ path: ':day', component: DayComponent }] },
   { path: 'summary', component: SummaryComponent },
 ];
 

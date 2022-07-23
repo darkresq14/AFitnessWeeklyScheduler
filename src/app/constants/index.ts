@@ -17,6 +17,41 @@ export enum KCAL_PER_MINUTE {
   Volleyball = 3,
 }
 
+// export enum ACTIVITY_OPTIONS {
+//   NoActivity = 'No Activity',
+//   Jogging = 'Jogging',
+//   Karate = 'Karate',
+//   Tennis = 'Tennis',
+//   Swimming = 'Swimming',
+//   Football = 'Football',
+//   Handball = 'Handball',
+//   Volleyball = 'Volleyball',
+// }
+
+// export const ACTIVITY_OPTIONS_ARRAY = [
+//   'No Activity',
+//   'Jogging',
+//   'Karate',
+//   'Tennis',
+//   'Swimming',
+//   'Football',
+//   'Handball',
+//   'Volleyball',
+// ] as const;
+
+// export type ACTIVITY_OPTIONS_TYPE = typeof ACTIVITY_OPTIONS_ARRAY;
+
+// export const ACTIVITY_OPTIONS_OBJ = {
+//   NoActivity: 'No Activity',
+//   Jogging: 'Jogging',
+//   Karate: 'Karate',
+//   Tennis: 'Tennis',
+//   Swimming: 'Swimming',
+//   Football: 'Football',
+//   Handball: 'Handball',
+//   Volleyball: 'Volleyball',
+// };
+
 export enum ACTIVITY_OPTIONS {
   NoActivity = 'No Activity',
   Jogging = 'Jogging',
