@@ -122,6 +122,14 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/afitness-weekly-scheduler",
+            "netlifyToken": "lPo2_iuhqwK3ZE-sLpG3vAlADcR9EPzzY00WFvMBmPo",
+            "siteId": "d76628fa-e0e6-4c3a-9a0f-c8f62aa00db5"
+          }
         }
       }
     }
