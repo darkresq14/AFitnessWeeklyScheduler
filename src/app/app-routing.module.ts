@@ -6,7 +6,7 @@ import { DayComponent } from './pages/day/day.component';
 import { SummaryComponent } from './pages/summary/summary.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'summary', pathMatch: 'full' },
+  { path: '', redirectTo: 'Day/Monday', pathMatch: 'full' },
   {
     path: 'Day',
     children: [
