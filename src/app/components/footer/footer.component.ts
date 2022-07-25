@@ -9,9 +9,9 @@ import { LINKS } from 'src/app/constants';
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  activeUrl: string;
-  prevUrl: string;
-  nextUrl: string;
+  activeUrl: string = '/Day/Monday';
+  prevUrl: string = 'Summary';
+  nextUrl: string = 'Tuesday';
 
   constructor(private router: Router) {}
 
@@ -19,10 +19,10 @@ export class FooterComponent implements OnInit {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        if (event.url.includes('day')) {
-          this.activeUrl = event.url.split('/')[2];
+        if (event.urlAfterRedirects.includes('day')) {
+          this.activeUrl = event.urlAfterRedirects.split('/')[2];
         } else {
-          this.activeUrl = event.url.split('/')[1];
+          this.activeUrl = event.urlAfterRedirects.split('/')[1];
         }
         const indexOfactive = LINKS.indexOf(this.activeUrl);
         if (indexOfactive === 0) {
