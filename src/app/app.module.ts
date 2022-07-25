@@ -10,6 +10,7 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { EnumToArrayPipe } from './helpers/enum-to-array.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ActivityComponent,
     EnumToArrayPipe,
     FooterComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

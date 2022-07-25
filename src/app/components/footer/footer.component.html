@@ -1,8 +1,38 @@
 <div class="row m-3">
   <div class="col-6">
-    <button class="btn btn-primary w-25 mx-3">Previous</button>
+    <button
+      *ngIf="prevUrl !== 'Summary'"
+      class="btn btn-primary mx-3"
+      style="width: 7em"
+      [routerLink]="['/Day/', prevUrl]"
+    >
+      {{ prevUrl }}
+    </button>
+    <button
+      *ngIf="prevUrl === 'Summary'"
+      class="btn btn-primary mx-3"
+      style="width: 7em"
+      [routerLink]="['/Summary']"
+    >
+      {{ prevUrl }}
+    </button>
   </div>
   <div class="col-6">
-    <button class="btn btn-primary w-25 float-end mx-3">Next</button>
+    <button
+      *ngIf="nextUrl !== 'Summary'"
+      class="btn btn-primary float-end mx-3"
+      style="width: 7em"
+      [routerLink]="['/Day/', nextUrl]"
+    >
+      {{ nextUrl }}
+    </button>
+    <button
+      *ngIf="nextUrl === 'Summary'"
+      class="btn btn-primary float-end mx-3"
+      style="width: 7em"
+      [routerLink]="['/Summary']"
+    >
+      {{ nextUrl }}
+    </button>
   </div>
 </div>

@@ -6,6 +6,15 @@ export enum WEEKDAYS {
   Friday = 'Friday',
 }
 
+export const LINKS = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Summary',
+];
+
 // Based on a 60kg woman
 export enum KCAL_PER_MINUTE {
   Jogging = 6,

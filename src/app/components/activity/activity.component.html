@@ -4,13 +4,14 @@
     <form [formGroup]="activityForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
-          <div class="form-group">
-            <label for="activityType" class="form-label">Activity</label>
+          <div class="input-group input-group-lg">
+            <span class="input-group-text" style="width: 15%">Activity</span>
             <select
               class="form-select"
               formControlName="activityType"
               name="activityType"
               id="activityType"
+              #optionInput
             >
               <option
                 *ngFor="let activityOption of activityOptions | enumToArray"
@@ -22,10 +23,10 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-2">
         <div class="col-xs-12">
-          <div class="form-group">
-            <label for="fromTime" class="form-label">From</label>
+          <div class="input-group input-group-lg">
+            <span class="input-group-text" style="width: 15%">From</span>
             <input
               type="time"
               class="form-control"
@@ -36,10 +37,10 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-2">
         <div class="col-xs-12">
-          <div class="form-group">
-            <label for="toTime" class="form-label">From</label>
+          <div class="input-group input-group-lg">
+            <span class="input-group-text" style="width: 15%">To</span>
             <input
               type="time"
               class="form-control"
@@ -52,8 +53,27 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div *ngIf="!activityForm.valid && activityForm.touched">
-            <sup>*</sup>Please provide city name
+          <div
+            class="alert-warning alert py-1 mt-2 mb-0"
+            *ngIf="
+              activityForm.invalid &&
+              (activityForm.touched || activityForm.dirty)
+            "
+          >
+            <div *ngIf="activityForm.errors?.['invalidTime']">
+              "From" time needs to be before "To" time. <br />Select "No
+              Activity" to reset the form.
+            </div>
+            <div
+              *ngIf="activityForm.errors?.['timeRequiredIfActivity']
+              "
+            >
+              Both "From" and "To" times are required if a Activity has been
+              selected. <br />Select "No Activity" to reset the form.
+            </div>
+            <div *ngIf="activityForm.errors?.['noActivityWithTime']">
+              "No Activity" cannot be selected with a time.
+            </div>
           </div>
         </div>
       </div>

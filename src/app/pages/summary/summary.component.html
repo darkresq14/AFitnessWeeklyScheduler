@@ -1,3 +1,34 @@
 <div class="row h-100 align-content-around">
-  <p>summary works!</p>
+  <div class="col-md-12">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-2"><strong>Day</strong></div>
+          <div class="col-2"><strong>Period</strong></div>
+          <div class="col-1"><strong>From</strong></div>
+          <div class="col-1"><strong>To</strong></div>
+          <div class="col-3"><strong>Activity</strong></div>
+          <div class="col-1"><strong>Min</strong></div>
+          <div class="col-1"><strong>Kcal</strong></div>
+        </div>
+      </li>
+      <li class="list-group-item" *ngFor="let activity of listOfActivities">
+        <div class="row">
+          <div class="col-2">{{ activity.day }}</div>
+          <div class="col-2">{{ activity.timeOfDay }}</div>
+          <div class="col-1">{{ activity.fromTime }}</div>
+          <div class="col-1">{{ activity.toTime }}</div>
+          <div class="col-3">{{ activity.activityType }}</div>
+          <div class="col-1">{{ activity.duration }}</div>
+          <div class="col-1">{{ activity.kCal }}</div>
+        </div>
+      </li>
+    </ul>
+    <div class="text-end">
+      Duration: <strong>{{ totalDuration }}</strong>
+    </div>
+    <div class="text-end">
+      KCal: <strong>{{ totalKCal }}</strong>
+    </div>
+  </div>
 </div>

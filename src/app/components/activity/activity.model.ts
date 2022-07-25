@@ -12,15 +12,15 @@ export class Activity {
   day: WEEKDAYS;
   timeOfDay: DAYPERIOD;
   activityType: ACTIVITY_OPTIONS;
-  fromTime: Date;
-  toTime: Date;
+  fromTime: string;
+  toTime: string;
 
   constructor(
     day: WEEKDAYS,
     timeOfDay: DAYPERIOD,
     activityType: ACTIVITY_OPTIONS,
-    fromTime: Date,
-    toTime: Date
+    fromTime: string,
+    toTime: string
   ) {
     this.day = day;
     this.timeOfDay = timeOfDay;
