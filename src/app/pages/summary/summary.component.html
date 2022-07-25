@@ -14,7 +14,11 @@
       </li>
       <li class="list-group-item" *ngFor="let activity of listOfActivities">
         <div class="row">
-          <div class="col-2">{{ activity.day }}</div>
+          <div class="col-2">
+            <ng-container *ngIf="activity.timeOfDay !== 'Evening'">{{
+              activity.day
+            }}</ng-container>
+          </div>
           <div class="col-2">{{ activity.timeOfDay }}</div>
           <div class="col-1">{{ activity.fromTime }}</div>
           <div class="col-1">{{ activity.toTime }}</div>

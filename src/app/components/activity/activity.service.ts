@@ -21,6 +21,11 @@ export class ActivityService {
     return this.activities.slice();
   }
 
+  setActivities(activities: Activity[]): void {
+    this.activities = activities;
+    this.triggerActivitiesChanged();
+  }
+
   getActivityByDayAndPeriod(day: WEEKDAYS, period: DAYPERIOD) {
     // console.log('Getting day and period: ', day, period);
     // console.log('All activities: ', this.activities);

@@ -18,6 +18,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ACTIVITY_OPTIONS, DAYPERIOD, WEEKDAYS } from 'src/app/constants';
 import { ContextService } from 'src/app/helpers/context.service';
+import { LocalService } from 'src/app/helpers/local.service';
 import { Activity } from './activity.model';
 import { ActivityService } from './activity.service';
 
@@ -42,7 +43,8 @@ export class ActivityComponent implements OnInit, OnDestroy {
     private activityService: ActivityService,
     private route: ActivatedRoute,
     private router: Router,
-    private context: ContextService
+    private context: ContextService,
+    private local: LocalService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -67,11 +69,19 @@ export class ActivityComponent implements OnInit, OnDestroy {
             { emitEvent: false }
           );
           this.saveActivity();
+          this.local.saveData(
+            'activities',
+            JSON.stringify(this.activityService.getActivities())
+          );
           this.context.setIsDayPeriodValid(this.activityPeriod, true);
         }
 
         if (this.activityForm.valid) {
           this.saveActivity();
+          this.local.saveData(
+            'activities',
+            JSON.stringify(this.activityService.getActivities())
+          );
           this.context.setIsDayPeriodValid(this.activityPeriod, true);
         } else {
           this.context.setIsDayPeriodValid(this.activityPeriod, false);
