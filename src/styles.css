@@ -1,6 +1,55 @@
+:root {
+  --primary: #222831;
+  --secondary: #393E46;
+  --contrast: #00ADB5;
+  --background: #EEEEEE;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+}
+
+body {
+  height: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (min-width: 0px) {
+  * {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 576px) {
+  * {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 768px) {
+  * {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 992px) {
+  * {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1200px) {
+  * {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1400px) {
+  * {
+    font-size: 17px;
+  }
 }

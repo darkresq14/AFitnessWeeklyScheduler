@@ -20,12 +20,6 @@ export class ContextService {
       this.isEveningValid = valid;
     }
 
-    console.log(
-      'Setting isDayPeriodValid: ',
-      this.isMorningValid,
-      this.isEveningValid
-    );
-
     this.isDayValid.next(this.isMorningValid && this.isEveningValid);
   }
 }
