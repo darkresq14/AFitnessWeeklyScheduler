@@ -1,10 +1,13 @@
-# AFitnessWeeklyScheduler
+# [AFitnessWeeklyScheduler](https://clinquant-gaufre-ad1506.netlify.app/)
 
-Fitness Weekly Scheduler using Angular 14
+Fitness Weekly Scheduler using Angular 14  
+Hosted on Netlify: https://clinquant-gaufre-ad1506.netlify.app/
 
 ## Packages
 
-Bootstrap 5
+Bootstrap 5  
+RxJS  
+Netlify-Builder Deploy
 
 ## To discuss
 
