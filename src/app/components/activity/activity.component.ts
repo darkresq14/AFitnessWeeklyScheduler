@@ -4,7 +4,6 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Output,
   ViewChild,
 } from '@angular/core';
 import {
@@ -35,6 +34,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
   isSubmitted = false;
 
   formSubscription: Subscription;
+  activitySubscription: Subscription;
 
   activityDay: WEEKDAYS;
   activityOptions = ACTIVITY_OPTIONS;
@@ -56,6 +56,11 @@ export class ActivityComponent implements OnInit, OnDestroy {
       this.activityDay = params['day'];
       this.initForm();
     });
+
+    this.activitySubscription =
+      this.activityService.activitiesChanged.subscribe(() => {
+        this.initForm();
+      });
 
     this.formSubscription = this.activityForm.valueChanges.subscribe(
       (value) => {
@@ -201,5 +206,6 @@ export class ActivityComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.formSubscription.unsubscribe();
+    this.activitySubscription.unsubscribe();
   }
 }

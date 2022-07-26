@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { LINKS } from 'src/app/constants';
+import { LocalService } from 'src/app/helpers/local.service';
+import { ActivityService } from '../activity/activity.service';
 
 @Component({
   selector: 'app-footer',
@@ -13,7 +15,11 @@ export class FooterComponent implements OnInit {
   prevUrl: string = 'Summary';
   nextUrl: string = 'Tuesday';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private local: LocalService,
+    private activityService: ActivityService
+  ) {}
 
   ngOnInit(): void {
     this.router.events
@@ -31,10 +37,18 @@ export class FooterComponent implements OnInit {
         } else if (indexOfactive === LINKS.length - 1) {
           this.prevUrl = LINKS[indexOfactive - 1];
           this.nextUrl = LINKS[0];
+        } else if (this.activeUrl === '404') {
+          this.prevUrl = LINKS[0];
+          this.nextUrl = LINKS[LINKS.length - 1];
         } else {
           this.prevUrl = LINKS[indexOfactive - 1];
           this.nextUrl = LINKS[indexOfactive + 1];
         }
       });
+  }
+
+  clearData() {
+    this.local.removeData('activities');
+    this.activityService.setActivities([]);
   }
 }

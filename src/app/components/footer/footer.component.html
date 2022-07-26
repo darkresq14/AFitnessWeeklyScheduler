@@ -1,38 +1,53 @@
-<div class="row m-3">
-  <div class="col-6">
-    <button
-      *ngIf="prevUrl !== 'Summary'"
-      class="btn btn-primary mx-3"
-      style="width: 7em"
-      [routerLink]="['/Day/', prevUrl]"
-    >
-      {{ prevUrl }}
-    </button>
-    <button
-      *ngIf="prevUrl === 'Summary'"
-      class="btn btn-primary mx-3"
-      style="width: 7em"
-      [routerLink]="['/Summary']"
-    >
-      {{ prevUrl }}
-    </button>
+<div class="row my-2">
+  <div class="col-4">
+    <div class="row">
+      <button
+        *ngIf="prevUrl !== 'Summary'"
+        class="btn btn-primary mx-auto"
+        style="width: 7em"
+        [routerLink]="['/Day/', prevUrl]"
+      >
+        {{ prevUrl }}
+      </button>
+      <button
+        *ngIf="prevUrl === 'Summary'"
+        class="btn btn-primary mx-auto"
+        style="width: 7em"
+        [routerLink]="['/Summary']"
+      >
+        {{ prevUrl }}
+      </button>
+    </div>
   </div>
-  <div class="col-6">
-    <button
-      *ngIf="nextUrl !== 'Summary'"
-      class="btn btn-primary float-end mx-3"
-      style="width: 7em"
-      [routerLink]="['/Day/', nextUrl]"
-    >
-      {{ nextUrl }}
-    </button>
-    <button
-      *ngIf="nextUrl === 'Summary'"
-      class="btn btn-primary float-end mx-3"
-      style="width: 7em"
-      [routerLink]="['/Summary']"
-    >
-      {{ nextUrl }}
-    </button>
+  <div class="col-4">
+    <div class="row">
+      <button
+        class="btn btn-warning mx-auto"
+        style="width: 7em"
+        (click)="clearData()"
+      >
+        Clear Data
+      </button>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="row">
+      <button
+        *ngIf="nextUrl !== 'Summary'"
+        class="btn btn-primary mx-auto"
+        style="width: 7em"
+        [routerLink]="['/Day/', nextUrl]"
+      >
+        {{ nextUrl }}
+      </button>
+      <button
+        *ngIf="nextUrl === 'Summary'"
+        class="btn btn-primary mx-auto"
+        style="width: 7em"
+        [routerLink]="['/Summary']"
+      >
+        {{ nextUrl }}
+      </button>
+    </div>
   </div>
 </div>

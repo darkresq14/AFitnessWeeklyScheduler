@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { DAYPERIOD, KCAL_PER_MINUTE, WEEKDAYS } from 'src/app/constants';
 import { Activity } from './activity.model';
 
@@ -9,7 +9,7 @@ import { Activity } from './activity.model';
 export class ActivityService {
   private activities: Activity[] = [];
 
-  activitiesChanged = new Subject<Activity[]>();
+  activitiesChanged = new BehaviorSubject<Activity[]>([]);
 
   constructor() {}
 
@@ -21,7 +21,7 @@ export class ActivityService {
     return this.activities.slice();
   }
 
-  setActivities(activities: Activity[]): void {
+  setActivities(activities: Activity[]) {
     this.activities = activities;
     this.triggerActivitiesChanged();
   }

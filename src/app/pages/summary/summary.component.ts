@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ActivityService } from 'src/app/components/activity/activity.service';
 import { DAYPERIOD, WEEKDAYS } from 'src/app/constants';
 
@@ -7,22 +8,31 @@ import { DAYPERIOD, WEEKDAYS } from 'src/app/constants';
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.css'],
 })
-export class SummaryComponent implements OnInit {
+export class SummaryComponent implements OnInit, OnDestroy {
   listOfActivities = [];
   totalKCal = 0;
   totalDurationInMinutes = 0;
   totalDuration = '';
+  activitySubscription: Subscription;
 
   constructor(private activityService: ActivityService) {}
 
   ngOnInit(): void {
+    this.activitySubscription =
+      this.activityService.activitiesChanged.subscribe(() => {
+        this.initPage();
+      });
+  }
+
+  initPage() {
+    this.listOfActivities = [];
     for (let day in WEEKDAYS) {
       for (let period in DAYPERIOD) {
         const newActivity = this.activityService.getActivityByDayAndPeriod(
           WEEKDAYS[day],
           DAYPERIOD[period]
         );
-        if (newActivity) {
+        if (newActivity && newActivity.fromTime && newActivity.toTime) {
           this.listOfActivities.push({
             day: newActivity.day,
             timeOfDay: newActivity.timeOfDay,
@@ -84,5 +94,9 @@ export class SummaryComponent implements OnInit {
     const durationInMinutes = this.calcDurationInMinutes(fromTime, toTime);
     const kCal = durationInMinutes * this.activityService.getKCal(activityType);
     return kCal;
+  }
+
+  ngOnDestroy(): void {
+    this.activitySubscription.unsubscribe();
   }
 }
